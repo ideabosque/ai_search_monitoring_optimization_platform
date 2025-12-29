@@ -1,0 +1,284 @@
+🧭  GEO/AI Search Monitoring 
+Platform Development Plan
+Cr e at ed b y 
+ Bibo Wang
+Cr e at ed time 
+T ags 
+Development Plan Full Lifecycle)
+Duration: 912 months total (with a 3–month MVP milestone)
+Methodology: Agile  3-week sprints per phase
+Core Stack: AWS Serverless Lambda, DynamoDB, S3, EventBridge, API 
+Gateway), OpenSearch, Neo4j, Redis Stack, React/Next.js, Tailwind, Playwright, 
+OpenAI Responses API
+🏗  PHASE 1 — Foundation & MVP (Months 1–3)
+Goal: Build an end-to-end functional MVP that captures AI search results, 
+normalizes them, and visualizes brand visibility.
+🔹  1. Core Infrastructure & DevOps Setup
+Objective: Establish the base environment and CI/CD pipelines.
+Tasks:
+Configure AWS environment IAM roles, S3, DynamoDB, Lambda, API 
+Gateway, CloudFront).
+Set up GitHub Actions for build, test, and deploy.
+Implement observability CloudWatch logs, metrics, alerts).
+Deliverable: Working backend skeleton with test deploys.
+Benefit: Team can deploy safely and monitor runtime costs from day one.
+Oct ober 29 , 2025 842 AM
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+1
+
+🔹  2. Prompt & Topic Manager (Discovery Layer)
+Objective: Allow users to define what the system should monitor.
+Business Flow:
+ Users create Topics (e.g., Plant Extracts).
+ Add Prompts (natural-language questions customers ask AI tools).
+ Choose Engines ChatGPT, Perplexity, Gemini).
+ Set cadence & budget.
+Technical Tasks:
+DynamoDB tables: t o p i c s , p r o m p t s , p l a n s .
+EventBridge  Step Functions  SQS to schedule jobs.
+API endpoints / p l a n s , / t o p i c s , / p r o m p t s .
+Frontend Tasks:
+React UI for creating and organizing prompts/topics.
+Deliverable: UI  backend flow that generates scheduled monitoring jobs.
+Benefit: Marketers define their GEO focus without engineering help.
+🔹  3. Engine Connectors & Collector System
+Objective: Collect real AI search answers automatically.
+Business Flow:
+The system “asksˮ AI engines questions from each plan.
+Captures answers, citations, and screenshots.
+Technical Tasks:
+Build collector microservice using Playwright on Fargate.
+Handle retries, proxy rotation, captcha avoidance.
+Store HTML/JSON/PNG to S3 / r a w / { e n g i n e } / { d a t e } .
+Record job status in j o b s  table.
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+2
+
+Deliverable: Daily automated collection pipeline for 2 engines ChatGPT  
+Perplexity).
+Benefit: Automated, verifiable data on brand visibility.
+🔹  4. Parser & Normalizer
+Objective: Clean and standardize raw data.
+Tasks:
+Lambda triggered by S3 new file events.
+Extract: answer text, citations, source links, metadata.
+Normalize format → store in a n s w e r s  and c i t a t i o n s  tables.
+Deliverable: Unified, comparable answer records.
+Benefit: Enables accurate analysis across AI engines.
+🔹  5. Dashboard MVP (Monitor & Understand Layer)
+Objective: Give users visual proof of visibility.
+Tasks:
+Build React dashboard showing:
+Answer Share % of prompts citing the brand).
+Citation Share % of links pointing to brand domain).
+Screenshots + full answers.
+Backend: OpenSearch index for fast querying.
+Deliverable: Fully functional visibility dashboard 1st version).
+Benefit: First “aha momentˮ — users see how AI talks about their brand.
+🔹  6. GEO Audit Crawler (Technical Readiness Checker)
+Objective: Help users understand how their website supports AI visibility.
+Tasks:
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+3
+
+Playwright crawler for sitemap traversal (respect robots.txt).
+Check presence of FAQ, schema, title tags, canonical links.
+Output a u d i t s  table (url, issue_code, severity, fix_recipe).
+Basic UI for issue list.
+Deliverable: Audit report with prioritized issues.
+Benefit: Clear actions to improve AI search readiness.
+🔹  7. Alerts & Weekly Digest
+Objective: Keep users informed about changes.
+Tasks:
+Lambda monitors Answer Share changes daily.
+Send weekly summary email via SES.
+Slack webhook for major visibility drops.
+Deliverable: Digest reports + alert triggers.
+Benefit: Builds habit — users stay engaged automatically.
+✅  MVP Complete — Month 3
+Users can:
+Define prompts  Collect AI answers  See dashboards  Get audits & alerts.
+KPIs:
+2 engines integrated
+5 min data delay per run
+1.5s dashboard load time
+1% collector error rate
+🚀  PHASE 2 — Optimization & Insight Engine (Months 
+4–6)
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+4
+
+Goal: Add analysis, competitor mapping, and actionability.
+🔹  8. Brand & Competitor Resolver
+Objective: Map mentions/citations to correct brand identities.
+Tasks:
+Create b r a n d s  + b r a n d _ a l i a s e s  tables.
+Fuzzy text matching for brand names and domains.
+Domain parser to assign “first-partyˮ vs “competitor.ˮ
+Visual competitor comparison view in dashboard.
+Benefit: Quantifies “whoʼs winningˮ in each AI engine.
+🔹  9. Scoring & Trend Engine
+Objective: Turn raw answers into business metrics.
+Tasks:
+Nightly Lambda aggregates A n s w e r  S h a r e , C i t a t i o n  S h a r e , P r o m i n e n c e , and S e n t i m e n t .
+Store historical snapshots (s c o r e s  table).
+Build trend charts and MoM deltas.
+Benefit: Marketing sees measurable progress, not just screenshots.
+🔹  10. Insights & Action Center
+Objective: Turn insights into prioritized tasks.
+Tasks:
+Recommend actions: “Add FAQ schema,ˮ “Write comparison page,ˮ “Update 
+product page metadata.ˮ
+Integrate LLM OpenAI Responses API for content outline generation.
+Integrate Jira/Notion API for task creation.
+Benefit: Converts data into business results (optimized content).
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+5
+
+🔹  11. API & Export Layer
+Objective: Allow BI integration.
+Tasks:
+Read endpoints / s c o r e s , / c i t a t i o n s , / a u d i t s .
+API Gateway  Cognito authentication.
+Signed URLs for evidence screenshots.
+Benefit: Enterprise customers can sync GEO data into their systems.
+🔹  12. Dashboard v2 (Comparisons & Drilldowns)
+Objective: Add deep-dive analytics.
+Tasks:
+Competitor share graphs.
+Engine comparison tabs.
+Filter by locale/topic/timeframe.
+Evidence viewer (click-through answers).
+Benefit: Converts the tool into a daily operational dashboard.
+✅  Phase 2 Outcome
+Users can:
+Track performance by engine/region/competitor.
+Receive actionable recommendations.
+Export data to analytics.
+KPIs:
+Competitor coverage 90%
+Action adoption rate tracked
+Weekly engagement 70%
+🔬
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+6
+
+🔬  PHASE 3 — Intelligence & Experimentation (Months 
+7–9)
+Goal: Add predictive and testing capabilities LLM Emulator & Experiments).
+🔹  13. LLM Emulator / Test Harness
+Objective: Let users test new content before publishing.
+Tasks:
+Deterministic LLM prompt pipeline (temperature=0.
+Judge model ranks which variant is more authoritative.
+Store test results in e m u l a t i o n _ r u n s .
+Benefit: Predicts which content version will perform better in AI search.
+🔹  14. Experiment Lab
+Objective: Validate changes in live data.
+Tasks:
+Allow users to define pre/post or A/B tests.
+Analyze real-world visibility lift.
+Visual experiment summary dashboard.
+Benefit: Proof of ROI for GEO changes — “We added schema, share increased 
+15%.ˮ
+🔹  15. Knowledge Graph (Neo4j Layer)
+Objective: Visualize relationships between brands, domains, and topics.
+Tasks:
+Build graph of Brand  Domain  Topic  Citation.
+Support queries like “Which domains dominate AI mentions for ‘Herbal 
+Ingredientsʼ?ˮ
+Benefit: Reveals partnership or outreach opportunities.
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+7
+
+✅  Phase 3 Outcome
+Users can:
+Test content before publishing.
+Measure after-change results.
+Understand topic relationships visually.
+KPIs:
+Test accuracy 80% correlation with live data
+Experiment lift validated in 4 weeks
+💼  PHASE 4 — Enterprise & Automation (Months 10–
+12)
+Goal: Add scale, governance, and enterprise features.
+🔹  16. Alerts & Automations v2
+Objective: Make insights actionable automatically.
+Tasks:
+Slack bots that push “new loss promptˮ alerts.
+Auto-create tickets when a visibility drop 10%.
+Benefit: Faster reaction and closed feedback loops.
+🔹  17. Billing, Tenancy, & Usage
+Objective: Support multi-tenant SaaS deployment.
+Tasks:
+Cognito for user auth and roles.
+Stripe metered billing by prompt runs and seats.
+Usage dashboard for admins.
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+8
+
+Benefit: Monetization and transparent resource control.
+🔹  18. Compliance & Observability
+Objective: Enterprise-grade reliability.
+Tasks:
+KMS encryption for all S3/DynamoDB data.
+S3 lifecycle retention 90/180/365 days).
+SOC2-style audit logging for enterprise clients.
+Benefit: Meets data governance and security standards.
+✅  Phase 4 Outcome
+Users can:
+Operate globally across multiple teams.
+Automate monitoring and alerts.
+Manage cost, billing, and compliance.
+⚙  Technical Stack Summary
+Layer Technology Purpose
+Frontend React  Next.js  Tailwind User dashboards & controls
+Backend API FastAPI (or AWS Lambda  API
+Gateway) REST endpoints & auth
+Workflow
+Orchestration
+Step Functions  EventBridge +
+SQS Collector scheduling
+Data Storage DynamoDB  S3  OpenSearch Raw + structured data
+Graph DB Neo4j Aura Brand/topic relationships
+Analytics OpenSearch Dashboards +
+Athena Trend visualization
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+9
+
+Layer Technology Purpose
+LLM Integration OpenAI Responses API Content outline, sentiment,
+emulator
+Automation SES  Slack Webhooks  Jira APIAlerts & action sync
+CI/CD GitHub Actions  AWS CDK Infra deployment
+Security Cognito  KMS  CloudWatch Access control & monitoring
+📈  Roadmap Summary
+Quarter Phase Major Deliverables
+Q1 Phase 1 MVP  collectors, dashboard, GEO audit, alerts
+Q2 Phase 2 Competitor tracking, scoring, insights/action center
+Q3 Phase 3 LLM emulator, experiment lab, graph view
+Q4 Phase 4 Billing, automation, compliance
+🧩  KPIs & Success Metrics
+Metric Target Why It Matters
+Daily run success rate  95% Reliable data collection
+Dashboard load time  2s Smooth UX
+User retention after 3 months  70% Engagement proof
+Content change → visibility lift 15% avg Business impact
+Prompt coverage 90% GEO readiness
+Revenue growth 10% MoM post-launchSaaS traction
+🧠  Strategic Takeaway
+This platform makes AI search measurable and actionable.
+Instead of wondering “How does ChatGPT describe my brand?ˮ — your 
+customers, marketers, and executives get:
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+10
+
+Evidence (screenshots & citations)
+Diagnosis (why itʼs happening)
+Action plan (how to fix it)
+Proof (visibility lift after change)
+Itʼs SEO reimagined for the AI era — blending marketing insight, technical audit, 
+and AI-driven optimization in one continuous loop:
+Monitor  Diagnose  Act  Verify.
+🧭  GEO / AI Se ar ch Monit or ing Plat f or m De v elopment Plan
+11

@@ -1,0 +1,153 @@
+GEO/AI Search Monitoring 
+Platform - Business Journey 
+Diagram
+Created by
+ Bibo Wang
+Created time
+Tags
+User Journey Overview
+This journey represents how marketing, SEO, and executive teams interact with 
+the platform from setup to continuous optimization. It maps business actions, 
+system processes, and value outcomes.
+1. Discover & Plan — Define What to Watch
+Business Actions:
+Marketing or SEO manager creates T opics  (e.g., "Herbal Ingredients").
+Adds Pr ompt s  — customer-like questions AI tools may answer ("Best suppliers 
+of ashwagandha?").
+Selects AI engines ChatGPT, Perplexity, Gemini, etc.) and regions.
+Defines competitors and schedule (daily/weekly).
+System Process:
+Scheduler EventBridge  Step Functions) creates query plans.
+Queries stored in DynamoDB as jobs awaiting execution.
+Value Outcome:
+User has a clear map of target conversations and markets.
+Platform knows exactly what to monitor and when.
+Oct ober 2 4 , 2025 1153 AM
+GEO / AI Se ar ch Monit or ing Plat f or m  Business Jour ne y Diagram
+1
+
+2. Monitor & Understand — Capture Brand Visibility
+Business Actions:
+The system automatically checks AI search engines for those prompts.
+Users open dashboards showing results for each engine.
+View answers, citations, and screenshots.
+System Process:
+Collectors Fargate  Playwright) simulate user queries.
+Data parsed and normalized by Lambda.
+Citations mapped to brands and competitors.
+Scores Answer Share, Citation Share, Sentiment) calculated and indexed in 
+OpenSearch.
+Value Outcome:
+Marketers get visual proof of how their brand appears in AI results.
+Executives see performance trends and competitor benchmarks.
+3. Diagnose — Identify Gaps & Weaknesses
+Business Actions:
+SEO team filters prompts where brand visibility is low.
+Opens evidence AI answer + competitor citations).
+Runs GEO Audit Crawler to check website readiness.
+System Process:
+Crawler Playwright) scans pages for schema, FAQ, structured data, and 
+content clarity.
+Audit results linked to topics/prompts in dashboard.
+Value Outcome:
+Teams know wh y  their content isnʼt being cited.
+Each issue linked to measurable impact.
+GEO / AI Se ar ch Monit or ing Plat f or m  Business Jour ne y Diagram
+2
+
+4. Act — Implement Optimizations
+Business Actions:
+Marketer selects suggested fix in Action Center (e.g., "Add FAQ schema to 
+Product X page").
+Generates content outline via built-in LLM assistant.
+Sends task to CMS or project tracker Jira/Notion).
+System Process:
+Recommendation engine prioritizes actions by impact potential.
+OpenAI Responses API creates draft outlines/snippets.
+Integrations push tasks to content systems.
+Value Outcome:
+Content teams focus only on high-ROI improvements.
+Actions are traceable and linked to business metrics.
+5. Test — Predict & Validate Changes
+Business Actions:
+Before publishing, SEO runs LLM Emulator to test which version is more likely 
+to be cited.
+After publishing, runs real-world Experiment Lab to measure lift.
+System Process:
+Emulator uses deterministic LLM (temperature=0 to simulate AI answers.
+Experiment Lab tracks pre/post results and computes visibility lift.
+Value Outcome:
+Risk-free testing before going live.
+Proof that changes increase AI visibility.
+GEO / AI Se ar ch Monit or ing Plat f or m  Business Jour ne y Diagram
+3
+
+6. Communicate — Stay Updated & Informed
+Business Actions:
+Executives receive weekly summary emails or Slack digests.
+Teams get instant alerts when visibility drops.
+Analysts create saved views and share dashboards.
+System Process:
+Alerts via SES  Slack webhooks.
+Dashboards pull data from OpenSearch.
+Annotations logged to capture decisions and actions.
+Value Outcome:
+Continuous visibility without manual effort.
+Transparent communication across marketing and management.
+7. Verify & Measure ROI — Close the Loop
+Business Actions:
+After fixes, marketers compare new vs old results.
+Export before/after reports for leadership.
+Track content-level ROI.
+System Process:
+Nightly scoring job computes new shares and deltas.
+Dashboard highlights changes vs previous period.
+Value Outcome:
+Verified performance improvements.
+Tangible ROI from GEO efforts.
+8. Scale & Govern — Enterprise Readiness
+GEO / AI Se ar ch Monit or ing Plat f or m  Business Jour ne y Diagram
+4
+
+Business Actions:
+Admins manage users, billing, and data retention.
+Compliance teams audit logs and retention policies.
+System Process:
+Cognito controls user roles and permissions.
+Stripe handles metered billing.
+S3 lifecycle rules enforce data retention.
+Value Outcome:
+Secure, multi-tenant, scalable platform.
+Ready for enterprise compliance and growth.
+Journey Summary: The Continuous Loop
+Define  Monitor  Diagnose  Act  Test  Communicate  Verify  Scal
+e
+Each step feeds the next:
+Define what matters → Monitor how you appear → Diagnose weak spots → 
+Act on fixes → Test before rollout → Communicate insights → Verify ROI  
+Scale success across products and regions.
+High-Level Business Flow Diagram (Textual)
+User Input]
+   ↓
+Prompt & Topic Manager] ─── ▶ Scheduler & Collector]
+   ↓                                   ↓
+Parser & Normalizer] ─── ▶ Dashboard & Scoring Engine]
+   ↓                                   ↓
+GEO Audit & Action Center] ─── ▶ LLM Emulator & Experiment Lab]
+   ↓                                   ↓
+GEO / AI Se ar ch Monit or ing Plat f or m  Business Jour ne y Diagram
+5
+
+Alerts & Reports] ───────────── ▶ Executive Dashboards]
+   ↓
+Billing, Security, Compliance]
+Strategic Impact
+For Marketers: Know exactly how AI search engines describe your brand.
+For SEO Teams: Get precise, data-backed guidance on how to improve 
+visibility.
+For Executives: View ROI and proof of impact from every GEO optimization.
+In short: The platform continuously learns from AI search, identifies where your 
+brand stands, helps you fix whatʼs missing, and proves the business value — all in 
+one loop.
+GEO / AI Se ar ch Monit or ing Plat f or m  Business Jour ne y Diagram
+6

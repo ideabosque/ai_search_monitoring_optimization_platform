@@ -1,0 +1,254 @@
+GEO/AI Search Monitoring 
+platform
+Cr e at ed b y 
+ Bibo Wang
+Cr e at ed time 
+T ags 
+🌐  Business Layer Overview
+The platform serves three main user personas:
+ Marketing & Growth Teams → want visibility and brand share in AI search.
+ SEO & Content Teams → need actionable fixes to improve citation rates.
+ Executives & Analysts → want measurable KPIs, ROI, and competitive 
+advantage.
+Weʼll break each layer into how users perform tasks, business benefits, and 
+technical architecture.
+🧭  Layer 1: Discover & Plan
+Business Goal: Define “what questions to trackˮ and “which engines to monitor.ˮ
+1. Prompt & Topic Manager
+How Users Use It:
+Create “topicsˮ that represent business verticals (e.g., Herbal Ingredients, 
+Protein Powders).
+Add “promptsˮ — the natural questions customers ask in AI search (“Who are 
+the best suppliers of ashwagandha extract?ˮ).
+Assign regions and engines ChatGPT, Perplexity, Gemini, Copilot).
+Set daily/weekly cadence, budgets, and competitor brands.
+Oct ober 29 , 2025 839 AM
+GEO / AI Se ar ch Monit or ing plat f or m
+1
+
+Business Benefit:
+Understand what conversations matter for the brand.
+Manage spending on prompt monitoring.
+Establish measurable search coverage (topics vs visibility).
+Technical Implementation:
+Data Model: t o p i c s , p r o m p t s , p l a n s .
+AWS Services: EventBridge (scheduler), Step Functions (plan orchestrator).
+API REST endpoints / p l a n s , / p r o m p t s , / t o p i c s .
+Storage: DynamoDB (plans), S3 (prompt lists).
+🔍  Layer 2: Monitor & Understand
+Business Goal: Measure brand visibility, identify competitorsʼ citations, and detect 
+market shifts.
+2. Engine Connectors
+How Users Use It:
+Automatically queries ChatGPT, Gemini, and Perplexity daily.
+Users can manually trigger a “re-runˮ to test after making content updates.
+View snapshots (answers + citations + screenshots) per prompt.
+Business Benefit:
+Transparent proof of how AI engines perceive and cite your brand.
+Early detection when your brand drops out of model answers.
+Technical Implementation:
+Collectors: Fargate  Playwright simulate user prompts.
+Data Capture: HTML, JSON, screenshots to S3 / r a w / { e n g i n e } / { d a t e } ).
+Monitoring: CloudWatch for success rate & engine response times.
+GEO / AI Se ar ch Monit or ing plat f or m
+2
+
+3. Parser & Normalizer
+How Users Use It:
+End users donʼt interact directly; backend unifies outputs from all engines.
+Data appears normalized in the “Prompt Explorerˮ UI with unified schema.
+Business Benefit:
+Consistent comparison across AI engines ChatGPT vs Gemini).
+Faster insights without worrying about technical differences.
+Technical Implementation:
+Lambda pipeline triggered by S3 upload.
+Extracts: answer text, citations, brands.
+Storage: DynamoDB a n s w e r s  + c i t a t i o n s .
+Index: OpenSearch for prompt-based queries.
+4. Brand & Competitor Resolver
+How Users Use It:
+Define brand aliases URLs, product names, abbreviations).
+System automatically maps mentions and URLs in answers to brand identities.
+Business Benefit:
+Quantifies competitive share: “Perplexity cites us in 30% of relevant prompts.ˮ
+Monitors new entrants and citation leaks.
+Technical Implementation:
+Brand Map DB b r a n d s , a l i a s e s .
+Entity Matching: Fuzzy search + domain parsing.
+Graph: Optional Neo4j for relationships B r a n d    D o m a i n    T o p i c .
+5. Scoring & Trends
+GEO / AI Se ar ch Monit or ing plat f or m
+3
+
+How Users Use It:
+Dashboard shows Answer Share, Citation Share, Prominence Index, 
+Sentiment.
+Compare current vs last week/month.
+Export reports for leadership meetings.
+Business Benefit:
+Quantifies performance in AI search GEO equivalent to SEO analytics).
+Detects spikes or declines per engine/locale.
+Technical Implementation:
+Batch Jobs: Step Functions trigger Lambda aggregator nightly.
+Store: s c o r e s  in DynamoDB; analytics indexed in OpenSearch.
+Charts: React  ECharts on the front-end.
+🧩  Layer 3: Optimize & Execute
+Business Goal: Turn insights into actions that improve visibility.
+6. GEO Audit Crawler
+How Users Use It:
+Run audits of your own website.
+View missing FAQ blocks, schema tags, canonical issues.
+Link each issue to affected prompts and expected visibility gains.
+Business Benefit:
+Fixes concrete, technical and content issues that block citation.
+Aligns SEO and content teams to measurable GEO performance.
+Technical Implementation:
+Crawler Engine: Playwright (renders JS, respects robots.txt.
+Checks: schema.org validation, meta tags, H1s, FAQ presence.
+GEO / AI Se ar ch Monit or ing plat f or m
+4
+
+Results: a u d i t s  table → fix recommendations.
+Integration: Jira API for task creation.
+7. Insights & Action Center
+How Users Use It:
+Receive ranked list of actions (e.g., “Add FAQ schema to Product Xˮ).
+See expected impact and evidence of why (competitor example, lost prompt).
+Use built-in LLM to draft optimized content outline.
+Business Benefit:
+Converts analytics into specific, measurable actions.
+Saves content teams hours of manual analysis.
+Technical Implementation:
+Recommendation Engine: Heuristic + regression (lost prompts × competitor 
+share).
+LLM Assist: OpenAI Responses API generates outlines/snippets.
+Integration: Connects to CMS or project management tool (e.g., Notion, Jira).
+8. LLM Emulator (Test Harness)
+How Users Use It:
+Test two page variants before publishing.
+Simulate how ChatGPT or Perplexity would respond.
+Compare which version is more “cite-worthy.ˮ
+Business Benefit:
+Predicts impact before committing to major content revisions.
+De-risks SEO/GEO changes.
+Technical Implementation:
+LLM Sandbox: Uses temperature=0, deterministic prompts.
+GEO / AI Se ar ch Monit or ing plat f or m
+5
+
+Judge Model: Evaluates content relevance and authoritativeness.
+Storage: e m u l a t i o n _ r u n s  with rationale & winner variant.
+9. Experiment Lab
+How Users Use It:
+Run real-world A/B experiments for changed pages or new content.
+Monitor AI search results for lift post-change.
+Business Benefit:
+Measures ROI of content optimization in real traffic-like scenarios.
+Builds internal benchmarks and best practices.
+Technical Implementation:
+Design: Pre/post analysis pipeline.
+Stats Engine: Bayesian uplift modeling.
+Dashboard: Experiment outcome report with significance levels.
+📣  Layer 4: Communicate & Automate
+Business Goal: Keep stakeholders updated and aligned automatically.
+10. Alerts & Digests
+How Users Use It:
+Subscribe to Slack/email alerts: “We lost 10% share in Gemini.ˮ
+Weekly digest shows gains, losses, new competitors.
+Business Benefit:
+Keeps marketing, executives, and SEO aligned without manual checks.
+Fast reaction to visibility drops.
+Technical Implementation:
+EventBridge Rules: detect metric anomalies.
+GEO / AI Se ar ch Monit or ing plat f or m
+6
+
+Delivery: SES  Slack Webhook; weekly batch generator.
+Templates: Markdown-based digest messages.
+11. Dashboard & Analyst Workbench
+How Users Use It:
+Create saved views for “US Market, ChatGPTˮ or “Top 10 Competitors.ˮ
+Annotate trend lines with events (“Added schema fix on Feb 10ˮ).
+Export PDFs for reporting.
+Business Benefit:
+Easy executive storytelling with visual proof (screenshots, graphs).
+Eliminates reliance on SEO spreadsheets.
+Technical Implementation:
+Frontend: Next.js  React  Tailwind  Recharts.
+Backend: OpenSearch queries.
+Exports: Puppeteer PDF generator for executive reports.
+12. API & Integrations
+How Users Use It:
+Integrate GEO data into internal BI dashboards or CRM.
+Pull real-time Answer/Citation data for internal content dashboards.
+Business Benefit:
+Seamless data sync for decision-making and KPI tracking.
+Adds GEO as a native metric in company analytics.
+Technical Implementation:
+API Gateway: / s c o r e s , / c i t a t i o n s , / a u d i t s .
+Auth: Cognito JWT.
+GEO / AI Se ar ch Monit or ing plat f or m
+7
+
+Webhooks: push new “lossˮ events to Slack or internal dashboards.
+⚙  Layer 5: Admin & Governance
+Business Goal: Enable scale, reliability, and compliance.
+13. Tenancy & Billing
+How Users Use It:
+Workspace admins manage team members, set permissions, and monitor 
+usage.
+Billing dashboard tracks run volume and seat usage.
+Business Benefit:
+Transparency on usage/costs; predictable subscription model.
+Technical Implementation:
+Auth: Cognito user pools, group roles.
+Billing: Stripe metered billing integration.
+Usage Logs: DynamoDB counters for run and prompt volume.
+14. Compliance & Observability
+How Users Use It:
+Legal/security teams view data retention settings and run audits.
+Engineers track SLA uptime, error rates, and engine performance.
+Business Benefit:
+Trust & compliance for enterprise customers.
+High availability and audit readiness.
+Technical Implementation:
+Observability: CloudWatch dashboards  XRay traces.
+Compliance: S3 lifecycle policies, KMS encryption, access logs.
+GEO / AI Se ar ch Monit or ing plat f or m
+8
+
+SLA Enforcement: daily pipeline freshness checks (e.g., “All engines synced 
+by 900 AMˮ).
+🏁  Business Impact Summary
+Feature Business Benefit Revenue/ROI Impact
+Prompt & Topic
+Manager
+Aligns GEO strategy with brand
+topics
+Saves analyst hours; better
+coverage
+Engine Monitoring Proof of brand presence or
+absence Defends market visibility
+GEO Audit Converts tech issues to
+measurable lift
+Improves citation share SEO
+2.0
+Action Center Prioritized roadmap for content
+team Faster wins, higher ROI
+LLM Emulator Predicts content impact before
+launch Reduces failed updates
+Alerts & Digests Continuous awareness Immediate response, less
+visibility loss
+Dashboard Executive visibility with proof Supports marketing/board
+reports
+Experiments Quantifies what works Enables data-driven
+optimization
+🚀  Final Business Narrative
+For marketers: You finally see how AI search engines describe your brand and 
+your competitors.
+For content teams: You get a prioritized to-do list to become more “AI-citable.ˮ
+For executives: You get dashboards showing ROI from every optimization.
+For the organization: You gain control over how generative AI talks about you 
+— and proof that your GEO strategy works.
+GEO / AI Se ar ch Monit or ing plat f or m
+9

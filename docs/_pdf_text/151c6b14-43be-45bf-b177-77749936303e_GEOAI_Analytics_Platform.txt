@@ -1,0 +1,212 @@
+GEO/AI Analytics Platform
+Created by
+ Bibo Wang
+Created time
+Tags
+🌐  1. Discover & Plan — Choosing What to Watch
+This is where users decide what kinds of questions they want the system to ask 
+the AI search engines.
+Prompt & Topic Manager
+What users do:
+You tell the system what questions people might ask in ChatGPT, Perplexity, or 
+Googleʼs AI Overview — like “Who are the best suppliers of ashwagandha?ˮ 
+or “Where can I buy bulk protein powder?ˮ
+You group these into topics Herbal Ingredients, Sports Nutrition, etc.) and set 
+how often to check — every day, week, or month. You can also add competitor 
+brands to compare against.
+What happens in the background:
+The system schedules automatic “queriesˮ to those AI platforms and keeps 
+track of costs and frequency.
+Why it matters:
+You get to focus on the conversations that matter most to your business — 
+instead of tracking thousands of random prompts.
+🔎  2. Monitor & Understand — Seeing How You Appear 
+in AI Results
+This part automatically checks how AI tools talk about your brand or your 
+competitors.
+Oct ober 2 4 , 2025 1148 AM
+GEO / AI Anal y tics Plat f or m
+1
+
+Engine Connectors
+What users see:
+You open a dashboard showing results from different AI engines ChatGPT, 
+Perplexity, Gemini, etc.). Each question shows the full AI answer, which links 
+were cited, and even a screenshot for proof.
+Behind the scenes:
+The platform automatically “asksˮ these questions to each AI engine, saves 
+the text of the answer, and captures the list of links or brand mentions.
+Benefit:
+You can clearly see if your brand is being mentioned or ignored — and how 
+that changes over time.
+Parser & Normalizer
+What users see:
+All answers look consistent, no matter which AI engine they came from.
+Behind the scenes:
+Each engineʼs answer format is different, so the system cleans and 
+standardizes them.
+Example: ChatGPT might show “sourcesˮ while Perplexity lists “links.ˮ The 
+platform turns them into one consistent format so you can compare fairly.
+Benefit:
+You get one clean dashboard instead of manually decoding different result 
+layouts.
+Brand & Competitor Resolver
+What users do:
+You add your companyʼs domains (like i n g r e d i e n t s o n l i n e . c o m ) and any brand 
+nicknames.
+Behind the scenes:
+GEO / AI Anal y tics Plat f or m
+2
+
+The system checks every link and text mention to figure out which brand it 
+belongs to — even if itʼs a subdomain or product name.
+Benefit:
+You know exactly who is winning attention in AI results — you, a competitor, or 
+a marketplace.
+Scoring & Trends
+What users see:
+A clear “report cardˮ of your brandʼs presence:
+Answer Share — how often your brand is mentioned in answers.
+Citation Share — how often your siteʼs links are cited.
+Sentiment — if mentions are positive or negative.
+Prominence — whether youʼre mentioned first or last.
+Behind the scenes:
+The system crunches daily data and turns it into visual trends and alerts.
+Benefit:
+You can easily spot if your visibility is improving, stable, or dropping — without 
+reading every single AI answer.
+⚙  3. Optimize & Execute — Taking Action
+Hereʼs where teams use insights to improve how their brand appears in AI search.
+GEO Audit Crawler
+What users do:
+Run a “site checkˮ on your website. The tool scans your pages and lists what 
+could help AI models understand and cite you better — like missing FAQ 
+schema, unclear titles, or lack of structured data.
+Behind the scenes:
+GEO / AI Anal y tics Plat f or m
+3
+
+It automatically browses your website (like Google does) and tests for specific 
+technical and content issues that affect AI visibility.
+Benefit:
+Instead of guessing, you get a to-do list with the exact changes that could 
+make your pages more “AI-friendly.ˮ
+Insights & Action Center
+What users do:
+The system gives you prioritized suggestions like:
+“Add an FAQ block to your ashwagandha page — itʼs missing on competitor 
+pages cited by ChatGPT.ˮ
+You can generate an outline or send the task directly to your content team.
+Behind the scenes:
+It connects GEO results, competitor data, and your website audit to suggest 
+the highest-impact actions.
+Benefit:
+You focus on fixes that actually move the needle, not on random SEO tweaks.
+LLM Emulator (Test Harness)
+What users do:
+Before publishing changes, you can test two content versions (say, old vs new 
+product page) and see which one AI engines are more likely to quote.
+Behind the scenes:
+The system uses an AI model that imitates ChatGPTʼs reasoning style. It “asksˮ 
+your target questions and measures which page seems more authoritative.
+Benefit:
+You can test content like youʼd test ads — before spending weeks waiting for 
+results.
+GEO / AI Anal y tics Plat f or m
+4
+
+Experiment Lab
+What users do:
+Launch small real-world tests — for example, change content on half your 
+pages and keep the other half as control.
+After a few weeks, see if your brand shows up more often in AI answers.
+Behind the scenes:
+The platform tracks before-and-after visibility and calculates whether the lift is 
+statistically significant.
+Benefit:
+You prove which optimizations really increase your AI visibility — with hard 
+data.
+📣  4. Communicate & Automate — Staying in the Loop
+Alerts & Digests
+What users do:
+Subscribe to instant alerts or weekly summaries.
+Example: “Your Answer Share dropped 10% on Gemini this week — 
+competitors gained ground.ˮ
+Behind the scenes:
+The system constantly checks for sudden changes or trends and sends alerts 
+via email or Slack.
+Benefit:
+You never miss an opportunity or threat — itʼs like a watchdog for your AI 
+visibility.
+Dashboard & Analyst Workbench
+What users do:
+GEO / AI Anal y tics Plat f or m
+5
+
+Explore data interactively — filter by engine, topic, or date; annotate key 
+events; export slides for reports.
+Behind the scenes:
+The dashboard pulls from analytics databases and adds saved “viewsˮ for 
+regular tracking.
+Benefit:
+Everyone — executives, marketers, or SEO  can understand performance at 
+a glance.
+API & Integrations
+What users do:
+Connect your GEO data to other systems like Google Data Studio, HubSpot, or 
+your internal BI tool.
+Behind the scenes:
+The API provides read-only access to answers, citations, and trends.
+Webhooks can push new loss/gain alerts automatically.
+Benefit:
+GEO data becomes part of your companyʼs overall marketing intelligence.
+🧱  5. Admin & Governance — Keeping It Reliable and 
+Secure
+Tenancy & Billing
+What users do:
+Admins manage workspaces, invite teammates, assign roles, and monitor 
+usage or costs.
+Behind the scenes:
+Subscription tiers control how many prompts and engines each workspace 
+can track.
+GEO / AI Anal y tics Plat f or m
+6
+
+Benefit:
+Clear visibility of usage and spend across teams.
+Compliance & Observability
+What users do:
+Compliance officers review data storage rules and retention policies; 
+engineers monitor uptime and errors.
+Behind the scenes:
+The system encrypts stored data, logs every action, and automatically 
+removes old results after set retention periods.
+Benefit:
+Enterprise-grade reliability and legal peace of mind.
+💡  Why Itʼs Valuable (Simple Summary)
+What It Does Why It Helps
+Tracks how AI tools describe
+your brand
+You can see if customers are hearing about you — or
+your competitors — first
+Audits your site for “AI-
+readinessˮ
+Gives clear, fixable steps to make your pages more
+visible
+Suggests and tests
+improvements Saves time and effort by focusing on what actually works
+Sends alerts and digests
+automatically Keeps everyone informed without manual checks
+Integrates into your existing
+dashboards
+GEO becomes part of your marketing and growth
+analytics
+🧭  In one line:
+The system continuously asks AI engines the same questions your customers 
+do, shows you how your brand appears in those answers, and helps you fix 
+whatʼs missing — automatically, with proof.
+GEO / AI Anal y tics Plat f or m
+7
+
+GEO / AI Anal y tics Plat f or m
+8
